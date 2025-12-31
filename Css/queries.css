@@ -1,0 +1,81 @@
+/* Sakura Foods - Responsive Breakpoints with Soft Sakura UI tweaks */
+
+@media (max-width: 84em) {
+  .hero {
+    max-width: 110rem;
+  }
+  .heading-primary {
+    font-size: 4.4rem;
+  }
+  .gallery {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 75em) {
+  html {
+    font-size: 56.25%;
+  }
+  .heading-secondary {
+    font-size: 3.6rem;
+  }
+  .heading-tertiary {
+    font-size: 2.4rem;
+  }
+  .main-nav-list {
+    gap: 2.4rem;
+  }
+  .hero {
+    gap: 3.2rem;
+  }
+}
+
+@media (max-width: 59em) {
+  html {
+    font-size: 50%;
+  }
+  .hero {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+  .hero-img {
+    width: 70%;
+    margin: 0 auto;
+  }
+  .btn--form {
+    margin-top: 1.2rem;
+  }
+}
+
+@media (max-width: 44em) {
+  .grid--3-cols,
+  .grid--4-cols {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .gallery {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.2rem;
+  }
+}
+
+@media (max-width: 34em) {
+  .grid--2-cols,
+  .grid--3-cols,
+  .grid--4-cols {
+    grid-template-columns: 1fr;
+  }
+  .btn {
+    padding: 2rem 2.4rem;
+    font-size: 1.8rem;
+  }
+  .hero-img {
+    width: 90%;
+  }
+  .testimonials,
+  .gallery {
+    grid-template-columns: 1fr;
+  }
+  .cta-text-box {
+    padding: 3.2rem;
+  }
+}
