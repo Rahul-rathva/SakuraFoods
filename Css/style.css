@@ -14,8 +14,82 @@
   position: relative;
 }
 
+
 .logo {
-  height: 2.2rem;
+  height: 1rem;
+}
+
+/* --- LOGO STYLING --- */
+.logo-container {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  gap: 0rem; /* Tiny gap for breathing room */
+}
+
+.logo-text {
+  font-size: 4rem;
+  font-weight: 700;
+  color: #5d4037; /* Brown color from your palette */
+  font-family: 'Rubik', sans-serif;
+  letter-spacing: 7px;
+}
+
+/* --- SIZED UP INLINE LOGO --- */
+.logo-container-fixed {
+  display: inline-flex;
+  align-items: center;
+  text-decoration: none;
+  gap: 0.5rem; /* Space between text and icon */
+  transition: all 0.3s ease;
+}
+
+.logo-text-main {
+  font-size: 3.6rem; /* Large, bold size */
+  font-weight: 700;
+  color: #5d4037; /* The zen-brown from your palette */
+  font-family: 'Rubik', sans-serif;
+  letter-spacing: 2px;
+  line-height: 1;
+}
+
+.logo-icon-inline {
+  height: 4.2rem; /* Slightly taller than the text to stand out */
+  width: auto;
+  display: block;
+  /* Optional: filter to make it pop if needed */
+  transition: transform 0.3s ease;
+}
+
+/* Hover effect for a fluid feel */
+.logo-container-fixed:hover .logo-icon-inline {
+  transform: rotate(15deg) scale(1.1);
+}
+
+.logo-container-fixed:hover .logo-text-main {
+  color: #e8a1a6; /* Sakura pink on hover */
+}
+
+.logo-inline {
+  height: 9rem; /* Matches the text height */
+  width: auto;
+}
+
+.meal-img, 
+.gallery-item img, 
+.step-img {
+  width: 100%;
+  max-height: 28rem; /* Keeps images from stretching the page */
+  object-fit: cover; /* Crops rather than stretching */
+  border-radius: 24px; /* Smooth, rounded corners as requested */
+  display: block;
+}
+
+/* Hero image specifically usually needs to be a bit larger */
+.hero-img {
+  max-height: 50rem;
+  width: auto;
+  border-radius: 32px;
 }
 
 /**************************/
@@ -207,7 +281,7 @@
 
 .step-img-box::before {
   width: 60%;
-  /* height: 60%; */
+  height: 60%;
 
   /* 60% of parent's width */
   padding-bottom: 60%;
@@ -225,8 +299,8 @@
 
 .step-img {
   width: 35%;
-  /* z-index: 10; */
-}
+  z-index: 10; 
+ } 
 
 /**************************/
 /* MEALS SECTION */
@@ -236,16 +310,46 @@
   padding: 9.6rem 0;
 }
 
+/* Smooth Meal Card Hover */
 .meal {
-  box-shadow: 0 2.4rem 4.8rem rgba(0, 0, 0, 0.075);
-  border-radius: 11px;
-  overflow: hidden;
-  transition: all 0.4s;
+  transition: var(--transition-smooth);
+  border: 1px solid transparent;
 }
 
 .meal:hover {
-  transform: translateY(-1.2rem);
-  box-shadow: 0 3.2rem 6.4rem rgba(0, 0, 0, 0.06);
+  transform: translateY(-1.5rem) scale(1.02);
+  box-shadow: 0 3.2rem 6.4rem rgba(232, 161, 166, 0.2); /* Pink-tinted shadow */
+  border: 1px solid var(--primary-sakura);
+}
+
+/* Cultural Blend Button */
+.main-nav-link.nav-cta:link,
+.main-nav-link.nav-cta:visited {
+  background-color: var(--primary-sakura); /* Japanese base */
+  border-bottom: 3px solid var(--primary-saffron); /* Indian accent */
+  transition: var(--transition-smooth);
+}
+
+.main-nav-link.nav-cta:hover {
+  background-color: var(--primary-saffron);
+  transform: translateY(-2px);
+}
+
+/* Sticky Header Fluidity */
+.header {
+  transition: var(--transition-smooth);
+}
+
+/* Reveal Effect for Sections */
+.section-reveal {
+  opacity: 0;
+  transform: translateY(4rem);
+  transition: all 0.8s ease-out;
+}
+
+.section-reveal--visible {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 .meal-content {
@@ -305,8 +409,56 @@
   color: #e67e22;
 }
 
-.meal-img {
+/* Soften all main content images */
+/* Ensure all main content images have a controlled, aesthetic shape */
+.meal-img,  
+.testimonial-img, 
+.gallery-item img {
+  /* Organic leaf-like shape you requested */
+  border-radius: 40px 15px 40px 15px !important; 
+  
+  /* FIX: Prevents images from becoming 'ridiculously tall' */
   width: 100%;
+  height: auto; 
+  max-height: 30rem; /* Adjust this value to your preferred height */
+  object-fit: cover; /* Crops the image to fit the area without stretching */
+  display: block;
+}
+
+/* Specific fix for the Hero image to keep it proportional */
+.hero-img {
+  max-height: 50rem; 
+  width: auto;
+  justify-self: center;
+}
+
+.meal-img {
+  border-radius: 0; /* Keeps the top image flush with the container */
+}
+/* 3D Tilt Effect for Meals */
+.meal {
+  perspective: 1000px;
+  transition: var(--transition-smooth);
+}
+
+.meal:hover {
+  transform: rotateY(5deg) rotateX(2deg) translateY(-1.5rem);
+  box-shadow: -10px 20px 40px rgba(232, 161, 166, 0.15);
+}
+
+/* Zen Scaling for Gallery Items */
+.gallery-item {
+  transition: var(--transition-smooth);
+}
+
+.gallery-item:hover {
+  z-index: 10;
+  transform: scale(1.08);
+  box-shadow: 0 0 30px var(--primary-light);
+}
+
+.gallery-item img:hover {
+  transform: scale(1); /* Overriding existing scale */
 }
 
 .all-recipes {
@@ -337,9 +489,27 @@
 }
 
 .testimonial-img {
-  width: 6.4rem;
+  /* Sizing up from 6.4rem to 9.6rem */
+  width: 10rem;
+  height: 12rem; /* Ensuring it stays a perfect circle */
+  
   border-radius: 50%;
   margin-bottom: 1.2rem;
+  
+  /* Blending with Sakura Theme */
+  border: 3px solid transparent;
+  background: linear-gradient(white, white) padding-box,
+              linear-gradient(to right, #e8a1a6, #ff9933) border-box; /* Pink to Saffron gradient border */
+  
+  /* Smooth interaction */
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  object-fit: cover;
+}
+
+/* Fluid hover effect */
+.testimonial-img:hover {
+  transform: scale(1.1) translateY(-5px);
+  box-shadow: 0 1rem 2rem rgba(232, 161, 166, 0.3);
 }
 
 .testimonial-text {
@@ -367,8 +537,8 @@
 .gallery-item img {
   display: block;
   width: 100%;
-  transition: all 0.4s;
-}
+  transition: all 0.4s; 
+ } 
 
 .gallery-item img:hover {
   transform: scale(1.1);
@@ -529,7 +699,7 @@
       rgba(235, 151, 78, 0.35),
       rgba(230, 125, 34, 0.35)
     ),
-    url("../img/eating.jpg");
+    url("../Images/Meals/eating.jpg");
   background-size: cover;
   background-position: center;
 }
