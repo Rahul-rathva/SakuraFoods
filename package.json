@@ -1,0 +1,27 @@
+{
+  "name": "sakurafoods",
+  "version": "1.0.0",
+  "description": "<<<<<<< HEAD\r # Omnifood-FoodDelivery\r \"Omnifood-FoodDelivery\" is housing an innovative food delivery website project named Omnifood. This repository contains the complete source code, design assets, and interactive features that power Omnifood's seamless online food ordering experience.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Rahul-rathva/SakuraFoods.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Rahul-rathva/SakuraFoods/issues"
+  },
+  "homepage": "https://github.com/Rahul-rathva/SakuraFoods#readme",
+  "dependencies": {
+    "cors": "^2.8.6",
+    "dotenv": "^17.2.3",
+    "express": "^5.2.1",
+    "mongoose": "^9.1.5",
+    "openai": "^6.16.0"
+  }
+}
