@@ -289,6 +289,17 @@
     height: 32rem;
     grid-row: 1;
   }
+
+  .step-img {
+    width: 65%; /* Sizing up for mobile specifically */
+    margin: 0 auto; /* Center it once it's in a single column */
+  }
+
+  .step-img-box {
+    transform: none; /* Resetting the translation to keep it centered */
+    padding: 2.4rem 0;
+  }
+
 }
 
 /* 
