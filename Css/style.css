@@ -271,6 +271,7 @@
   
   /* IMPORTANT: Remove overflow: hidden if it was there */
   overflow: visible; 
+  padding: 4rem 0;
 }
 
 /* Base style for BOTH background circles */
@@ -305,10 +306,11 @@
 
 /* The actual phone image */
 .step-img {
-  width: 30%; /* Adjust as needed */
+  width: 70%; /* Adjust as needed */
   
   /* FIX: Ensures the phone is on top and NOT cropped */
   position: relative;
+  height: auto;
   z-index: 10;
   display: block;
   
