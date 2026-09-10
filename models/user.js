@@ -10,16 +10,11 @@ const ALLOWED_DIETS = [
   "lactose-free",
   "keto",
   "paleo",
-  "no-preference",
+  "low-fodmap",
+  "kid-friendly",
 ];
 
-const ALLOWED_SOURCES = [
-  "friends",
-  "youtube",
-  "podcast",
-  "ad",
-  "others",
-];
+const ALLOWED_SOURCES = ["friends", "youtube", "podcast", "ad", "others"];
 
 const userSchema = new mongoose.Schema(
   {
@@ -58,8 +53,8 @@ const userSchema = new mongoose.Schema(
       },
     },
     weeklyPlan: {
-      type: String,
-      default: "",
+      type: mongoose.Schema.Types.Mixed,
+      default: null,
     },
     createdAt: {
       type: Date,
@@ -71,8 +66,30 @@ const userSchema = new mongoose.Schema(
   }
 );
 
+function parseDislikes(value) {
+  if (Array.isArray(value)) {
+    return value.map((item) => String(item).trim()).filter(Boolean);
+  }
+
+  if (typeof value !== "string" || !value.trim()) {
+    return [];
+  }
+
+  return value
+    .split(",")
+    .map((item) => item.trim())
+    .filter(Boolean);
+}
+
+function isValidEmail(email) {
+  return typeof email === "string" && EMAIL_REGEX.test(email.trim());
+}
+
 const User = mongoose.model("User", userSchema);
 
 module.exports = User;
 module.exports.ALLOWED_DIETS = ALLOWED_DIETS;
 module.exports.ALLOWED_SOURCES = ALLOWED_SOURCES;
+module.exports.parseDislikes = parseDislikes;
+module.exports.isValidEmail = isValidEmail;
+module.exports.EMAIL_REGEX = EMAIL_REGEX;
