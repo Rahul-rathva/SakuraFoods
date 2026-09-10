@@ -592,17 +592,16 @@
                 first meal is on us!
               </p>
 
-              <form class="cta-form" action="https://formspree.io/f/xjggqjjp" method="POST">
-                <input type="hidden" name="_next" value="https://rahul-rathva.github.io/BlossomFoods/thanks.html">
-
+              <form id="signup-form" class="cta-form">
                 <div>
-                  <label for="full-name">Full Name</label>
+                  <label for="fullName">Full Name</label>
                   <input
-                    id="full-name"
-                    name="full-name"
+                    id="fullName"
+                    name="fullName"
                     type="text"
                     placeholder="John Smith"
                     required
+                    minlength="2"
                   />
                 </div>
 
@@ -618,8 +617,24 @@
                 </div>
 
                 <div>
-                  <label for="select-where">Where did you hear from us?</label>
-                  <select id="select-where" name="source" required>
+                  <label for="diet">Diet preference</label>
+                  <select id="diet" name="diet" required>
+                    <option value="">Please choose one option:</option>
+                    <option value="vegetarian">Vegetarian</option>
+                    <option value="vegan">Vegan</option>
+                    <option value="pescatarian">Pescatarian</option>
+                    <option value="gluten-free">Gluten-free</option>
+                    <option value="lactose-free">Lactose-free</option>
+                    <option value="keto">Keto</option>
+                    <option value="paleo">Paleo</option>
+                    <option value="low-fodmap">Low FODMAP</option>
+                    <option value="kid-friendly">Kid-friendly</option>
+                  </select>
+                </div>
+
+                <div>
+                  <label for="source">Where did you hear from us?</label>
+                  <select id="source" name="source" required>
                     <option value="">Please choose one option:</option>
                     <option value="friends">Friends and family</option>
                     <option value="youtube">YouTube video</option>
@@ -629,11 +644,22 @@
                   </select>
                 </div>
 
-                <button class="btn btn--form">Sign up now</button>
+                <div class="form-full">
+                  <label for="dislikes">Foods to avoid (optional)</label>
+                  <input
+                    id="dislikes"
+                    name="dislikes"
+                    type="text"
+                    placeholder="spicy, shellfish"
+                  />
+                </div>
 
-                <!-- <input type="checkbox" />
-                <input type="number" /> -->
+                <button class="btn btn--form form-full" id="signup-submit" type="submit">
+                  Sign up now
+                </button>
               </form>
+
+              <p id="form-status" class="form-status" role="status" hidden></p>
             </div>
             <div
               class="cta-img-box"
@@ -642,6 +668,18 @@
             ></div>
           </div>
         </div>
+
+        <div id="plan-loading" class="plan-loading container" hidden>
+          <div class="plan-spinner" aria-hidden="true"></div>
+          <p>BlossomFoods AI is plating your 7-day fusion menu...</p>
+        </div>
+
+        <section id="meal-plan-result" class="meal-plan container" hidden>
+          <span class="subheading">Your weekly menu</span>
+          <h2 class="heading-secondary">Personalized meal plan</h2>
+          <p id="meal-plan-subtitle" class="meal-plan-subtitle"></p>
+          <div id="meal-plan-days" class="meal-plan-days"></div>
+        </section>
       </section>
     </main>
 
@@ -726,7 +764,6 @@
     </footer>
 
    <script>
-
      function createPetal() {
        const petal = document.createElement('div');
        petal.classList.add('petal');
@@ -738,6 +775,143 @@
        setTimeout(() => petal.remove(), 5000);
       }
       setInterval(createPetal, 300);
+
+      const API_BASE = "http://localhost:3000";
+      const DIET_LABELS = {
+        vegetarian: "Vegetarian",
+        vegan: "Vegan",
+        pescatarian: "Pescatarian",
+        "gluten-free": "Gluten-free",
+        "lactose-free": "Lactose-free",
+        keto: "Keto",
+        paleo: "Paleo",
+        "low-fodmap": "Low FODMAP",
+        "kid-friendly": "Kid-friendly",
+      };
+
+      const form = document.getElementById("signup-form");
+      const submitBtn = document.getElementById("signup-submit");
+      const statusEl = document.getElementById("form-status");
+      const loadingEl = document.getElementById("plan-loading");
+      const resultEl = document.getElementById("meal-plan-result");
+      const subtitleEl = document.getElementById("meal-plan-subtitle");
+      const daysEl = document.getElementById("meal-plan-days");
+
+      function parseDislikes(value) {
+        return value
+          .split(",")
+          .map((item) => item.trim())
+          .filter(Boolean);
+      }
+
+      function showStatus(message, type) {
+        statusEl.hidden = false;
+        statusEl.textContent = message;
+        statusEl.className = "form-status form-status--" + type;
+      }
+
+      function setLoading(isLoading) {
+        submitBtn.disabled = isLoading;
+        submitBtn.textContent = isLoading ? "Creating your plan..." : "Sign up now";
+        loadingEl.hidden = !isLoading;
+        if (isLoading) {
+          resultEl.hidden = true;
+          loadingEl.scrollIntoView({ behavior: "smooth", block: "center" });
+        }
+      }
+
+      function escapeHtml(value) {
+        return String(value)
+          .replace(/&/g, "&amp;")
+          .replace(/</g, "&lt;")
+          .replace(/>/g, "&gt;")
+          .replace(/"/g, "&quot;");
+      }
+
+      function renderPlan(plan, diet, dislikes) {
+        const dietName = DIET_LABELS[diet] || diet;
+        const avoiding = dislikes.length ? dislikes.join(", ") : "nothing specific";
+        subtitleEl.textContent = "Personalized for " + dietName + ", avoiding " + avoiding + ".";
+
+        if (plan && Array.isArray(plan.days)) {
+          daysEl.innerHTML = plan.days
+            .map(function (day) {
+              return (
+                '<article class="meal-day">' +
+                "<h3>" + escapeHtml(day.day || "Day") + "</h3>" +
+                '<ul class="meal-day-list">' +
+                "<li><strong>Breakfast</strong> " + escapeHtml(day.breakfast || "") + "</li>" +
+                "<li><strong>Lunch</strong> " + escapeHtml(day.lunch || "") + "</li>" +
+                "<li><strong>Dinner</strong> " + escapeHtml(day.dinner || "") + "</li>" +
+                "<li><strong>Snack</strong> " + escapeHtml(day.snack || "") + "</li>" +
+                "</ul></article>"
+              );
+            })
+            .join("");
+        } else {
+          daysEl.innerHTML =
+            '<pre class="meal-plan-raw">' +
+            escapeHtml(plan && plan.raw ? plan.raw : JSON.stringify(plan, null, 2)) +
+            "</pre>";
+        }
+
+        resultEl.hidden = false;
+        resultEl.scrollIntoView({ behavior: "smooth", block: "start" });
+      }
+
+      async function postJson(path, body) {
+        const response = await fetch(API_BASE + path, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(body),
+        });
+
+        let data = {};
+        try {
+          data = await response.json();
+        } catch (err) {
+          data = {};
+        }
+
+        if (!response.ok) {
+          throw new Error(data.error || "Something went wrong. Please try again.");
+        }
+
+        return data;
+      }
+
+      form.addEventListener("submit", async function (event) {
+        event.preventDefault();
+
+        const payload = {
+          fullName: form.fullName.value.trim(),
+          email: form.email.value.trim(),
+          diet: form.diet.value,
+          source: form.source.value,
+          dislikes: parseDislikes(form.dislikes.value),
+        };
+
+        setLoading(true);
+        showStatus("Saving your preferences...", "info");
+
+        try {
+          await postJson("/api/signup", payload);
+          showStatus("Preferences saved. Asking the chef for your menu...", "info");
+
+          const planData = await postJson("/api/generate-plan", {
+            email: payload.email,
+            diet: payload.diet,
+          });
+
+          showStatus("Your personalized 7-day plan is ready below.", "success");
+          renderPlan(planData.plan, planData.diet || payload.diet, planData.dislikes || payload.dislikes);
+        } catch (err) {
+          console.error(err);
+          showStatus(err.message, "error");
+        } finally {
+          setLoading(false);
+        }
+      });
       </script> 
 
   </body>

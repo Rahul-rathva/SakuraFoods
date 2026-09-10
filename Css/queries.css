@@ -117,6 +117,10 @@
     grid-template-columns: 1fr;
   }
 
+  .meal-plan-days {
+    grid-template-columns: 1fr;
+  }
+
   .btn--form {
     margin-top: 1.2rem;
   }
@@ -288,6 +292,15 @@
   .cta-img-box {
     height: 32rem;
     grid-row: 1;
+  }
+
+  .meal-plan {
+    margin-top: 4.8rem;
+  }
+
+  .meal-plan-days {
+    grid-template-columns: 1fr;
+    gap: 2rem;
   }
 
   .step-img {

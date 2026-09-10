@@ -2,8 +2,9 @@
   "name": "sakurafoods",
   "version": "1.0.0",
   "description": "<<<<<<< HEAD\r # Omnifood-FoodDelivery\r \"Omnifood-FoodDelivery\" is housing an innovative food delivery website project named Omnifood. This repository contains the complete source code, design assets, and interactive features that power Omnifood's seamless online food ordering experience.",
-  "main": "index.js",
+  "main": "server.js",
   "scripts": {
+    "start": "node server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {

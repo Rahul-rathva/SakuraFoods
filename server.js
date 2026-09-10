@@ -1,4 +1,3 @@
-const path = require("path");
 const express = require("express");
 const mongoose = require("mongoose");
 const dotenv = require("dotenv");
@@ -117,14 +116,6 @@ app.post("/api/signup", async (req, res) => {
 });
 
 app.use("/api", aiRoutes);
-
-app.get("*", (req, res, next) => {
-  if (req.path.startsWith("/api")) {
-    return next();
-  }
-
-  res.sendFile(path.join(__dirname, "index.html"));
-});
 
 app.listen(PORT, () => {
   console.log(`BlossomFoods server is running on http://localhost:${PORT}`);

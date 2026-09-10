@@ -750,6 +750,117 @@
   color: #aaa;
 }
 
+.cta-form .form-full {
+  grid-column: 1 / -1;
+}
+
+.form-status {
+  margin-top: 2.4rem;
+  font-size: 1.6rem;
+  font-weight: 500;
+  line-height: 1.6;
+}
+
+.form-status--info {
+  color: #5d4037;
+}
+
+.form-status--success {
+  color: #2e7d32;
+}
+
+.form-status--error {
+  color: #c62828;
+}
+
+.plan-loading {
+  margin-top: 6.4rem;
+  text-align: center;
+  color: #5d4037;
+}
+
+.plan-loading p {
+  margin-top: 2rem;
+  font-size: 1.8rem;
+}
+
+.plan-spinner {
+  width: 5.6rem;
+  height: 5.6rem;
+  margin: 0 auto;
+  border: 0.6rem solid #fde4e6;
+  border-top-color: #e8a1a6;
+  border-right-color: #ff9933;
+  border-radius: 50%;
+  animation: spin 0.9s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.meal-plan {
+  margin-top: 8rem;
+  margin-bottom: 4.8rem;
+}
+
+.meal-plan-subtitle {
+  font-size: 1.8rem;
+  line-height: 1.6;
+  color: #5d4037;
+  margin-bottom: 4.8rem;
+}
+
+.meal-plan-days {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 3.2rem;
+}
+
+.meal-day {
+  background-color: #fff5f6;
+  border: 1px solid rgba(232, 161, 166, 0.35);
+  border-radius: 1.2rem;
+  padding: 2.8rem 3.2rem;
+  box-shadow: 0 1.2rem 2.4rem rgba(93, 64, 55, 0.06);
+}
+
+.meal-day h3 {
+  font-size: 2rem;
+  color: #5d4037;
+  margin-bottom: 1.6rem;
+}
+
+.meal-day-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+  font-size: 1.6rem;
+  line-height: 1.6;
+  color: #555;
+}
+
+.meal-day-list strong {
+  color: #ff9933;
+  display: block;
+  font-size: 1.4rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  margin-bottom: 0.2rem;
+}
+
+.meal-plan-raw {
+  grid-column: 1 / -1;
+  white-space: pre-wrap;
+  background-color: #fff5f6;
+  padding: 2.4rem;
+  border-radius: 1.2rem;
+  font-size: 1.4rem;
+}
+
 .cta *:focus {
   outline: none;
   box-shadow: 0 0 0 0.8rem rgba(253, 242, 233, 0.5);
