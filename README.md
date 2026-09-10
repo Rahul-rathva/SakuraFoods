@@ -1,180 +1,242 @@
-<<<<<<< HEAD
-# Omnifood-FoodDelivery
-"Omnifood-FoodDelivery" is housing an innovative food delivery website project named Omnifood. This repository contains the complete source code, design assets, and interactive features that power Omnifood's seamless online food ordering experience.
+# BlossomFoods 🌸🍙
 
+**An AI-powered, 365-day food subscription service landing page delivering personalized Japanese-Indian fusion meals in New Delhi.**
 
-## About Omnifood
-=======
-# SakuraFood-FoodDelivery
-"SakuraFood-FoodDelivery" is housing an innovative food delivery website project named Omnifood. This repository contains the complete source code, design assets, and interactive features that power Omnifood's seamless online food ordering experience.
+## 🎯 Overview
 
+BlossomFoods is a modern, responsive landing page for a premium meal subscription service. It features:
+- **"Blossom & Spice" aesthetic** — Sakura pink and saffron Indian accents blended throughout
+- **Fluid animations** — Falling petal effects, smooth hover transitions, and reveal effects
+- **Lead-capture system** — Production-ready form integration with Formspree for email collection
+- **AI-ready backend** — Node.js + Express + MongoDB foundation for meal personalization (in development)
 
-## About SakuraFood
->>>>>>> 8031487f55f8f799df7d9fdbc05afe2982ff2819
+The landing page is **fully functional as a lead-generation tool**. The backend AI infrastructure is in place but not yet connected to the frontend.
 
-We are a technology company first, but with a major focus on consumer well-being through a healthy diet. Most people are very busy with their jobs, family and friends, and other important activities, which doesn't leave much time for cooking. This might lead to a poor diet and lasting health consequences. We want to solve this problem by using an AI-centric approach. Users can use our app to select their diet and foods they like and dislike, and our AI algorithm will create a custom and individual weekly meal plan. But we don't stop there. We partner with restaurants and other cooking partners to actually cook and deliver all meals from the generated meal plans, in selected cities. All this will be packed up in a monthly subscription, where users can choose between receiving one or two meals per day, every single day of the month.
+---
 
-## Branding
+## ✨ Features
 
-Headline: A healthy meal delivered to your door, every single day
+### Frontend (Live & Complete)
+- ✅ Responsive single-page landing site (HTML5, CSS3, vanilla JS)
+- ✅ Mobile-optimized design with hamburger navigation
+- ✅ Animated hero section with customer testimonials
+- ✅ Interactive meal showcase (2,000+ recipes available)
+- ✅ Dual pricing tiers (Starter $399/mo, Complete $649/mo)
+- ✅ Photo gallery with zoom hover effects
+- ✅ Lead-capture form via Formspree (redirects to confirmation page)
+- ✅ Falling sakura petal animation
+- ✅ SEO-friendly meta tags and Open Graph support
 
-Brand color: #e67e22
+### Backend (Foundation Ready)
+- 🚀 Express.js server with CORS support
+- 📦 Mongoose schemas for user profiles and meal preferences
+- 🧠 OpenAI integration scaffolded (for future AI meal plan generation)
+- 🔌 `/generate-plan` endpoint ready for personalized meal recommendations
+- 📊 MongoDB connection configured via environment variables
 
-<<<<<<< HEAD
-## Omnifood Website Content
-=======
-## SakuraFood Website Content
->>>>>>> 8031487f55f8f799df7d9fdbc05afe2982ff2819
+---
 
-### Summary
+## 📋 Current Status
 
-The smart 365-days-per-year food subscription that will make you eat healthy again. Tailored to your personal tastes and nutritional needs. We have delivered 250,000+ meals last year!
+### What Works Now
+- Landing page is **production-ready** for capturing leads
+- Email forms submit successfully to Formspree
+- All styling and animations function correctly
+- Backend server can be started locally
+- Database schema is defined
 
-### Omnifood features
+### What's In Development
+- Frontend-to-backend connection (form → /generate-plan endpoint)
+- AI meal plan generation via OpenAI
+- Deployment of backend to production
+- User authentication & account management
+- Meal plan approval workflow
+- Delivery scheduling system
 
-Never cook again!: Our subscriptions cover 365 days per year, even including major holidays.
-Local and organic: Our cooks only use local, fresh, and organic products to prepare your meals.
-No waste: All our partners only use reusable containers to package all your meals.
-Pause anytime: Going on vacation? Just pause your subscription, and we refund unused days.
+---
 
-### How Omnifood works
+## 🛠 Tech Stack
 
-![Screenshot 1](screenshots/screenshot1.png)
-![Screenshot 2](screenshots/screenshot2.png)
-![Screenshot 3](screenshots/screenshot3.png)
+| Layer | Technology |
+|-------|------------|
+| **Frontend** | HTML5, CSS3, JavaScript (Ionicons) |
+| **Backend** | Node.js, Express 5.x |
+| **Database** | MongoDB + Mongoose 9.x |
+| **AI** | OpenAI API (text-davinci-003) |
+| **Form Handling** | Formspree |
+| **Hosting** | GitHub Pages (frontend), TBD (backend) |
 
-**Your daily dose of health in 3 simple steps**
+---
 
-Tell us what you like (and what not): Never again waste time thinking about what to eat! Omnifood AI will create a 100% personalized weekly meal plan just for you. It makes sure you get all the nutrients and vitamins you need, no matter what diet you follow!
+## 🚀 Quick Start
 
-Approve your weekly meal plan: Once per week, approve the meal plan generated for you by Omnifood AI. You can change ingredients, swap entire meals, or even add your own recipes.
+### View the Landing Page
+```bash
+# Clone the repo
+git clone https://github.com/Rahul-rathva/BlossomFoods.git
+cd BlossomFoods
 
-Receive meals at convenient time: Best chefs in town will cook your selected meal every day, and we will deliver it to your door whenever works best for you. You can change delivery schedule and address daily!
+# Open in browser
+open index.html
+# or navigate to: https://rahul-rathva.github.io/BlossomFoods/
+```
 
-<<<<<<< HEAD
-### Omnifood works with any diet
-=======
-### SakuraFood works with any diet
->>>>>>> 8031487f55f8f799df7d9fdbc05afe2982ff2819
+### Run the Backend Locally (Optional)
+```bash
+# Install dependencies
+npm install
 
-Vegetarian
-Vegan
-Pescatarian
-Gluten-free
-Lactose-free
-Keto
-Paleo
-Low FODMAP
-Kid-friendly
+# Create .env file with:
+MONGO_URL=mongodb+srv://username:password@cluster.mongodb.net/blossomfoods
+OPENAI_API_KEY=sk-your-key-here
 
-### Sample meals
+# Start the server
+node server.js
+# Server runs on http://localhost:3000
+```
 
-<<<<<<< HEAD
-**Omnifood AI chooses from 5,000+ recipes**
-=======
-**SakuraFood AI chooses from 5,000+ recipes**
->>>>>>> 8031487f55f8f799df7d9fdbc05afe2982ff2819
+---
 
-Meal 1: Japanese Gyozas
+## 📁 Project Structure
 
-- Category: Vegetarian
-- Calories: 650
-- NutriScore (Registered): 74
-- Average rating: 4.9
-- Number reviews: 537
+```
+BlossomFoods/
+├── index.html              Main landing page
+├── thanks.html             Confirmation page (post-signup)
+├── server.js               Express server entry point
+├── package.json            Node.js dependencies
+├── package-lock.json       Dependency lock file
+│
+├── Css/
+│   ├── general.css         Reset, typography, variables
+│   ├── style.css           Component styles (14.6 KB)
+│   └── queries.css         Mobile responsive breakpoints
+│
+├── Images/
+│   ├── Meals/              Hero, meal showcase images
+│   ├── Customers/          Customer testimonial avatars
+│   ├── Gallery/            Food photography (12 images)
+│   ├── Apps/               iPhone app UI mockups
+│   └── logos/              "Featured in" publication logos
+│
+├── models/
+│   └── user.js             Mongoose schema (name, email, diet, preferences)
+│
+└── routes/
+    └── airoutes.js         POST /generate-plan endpoint (OpenAI integration)
+```
 
-Meal 2: Avocado Salad
+---
 
-- Category: Vegan and Paleo
-- Calories: 400
-- NutriScore (Registered): 92
-- Average rating: 4.8
-- Number reviews: 441
+## 📋 How It Works
 
-### We offer a free sample meal
+### Landing Page Flow (Live Now)
+1. **User arrives** → Sees hero section with call-to-action
+2. **Browses sections** → Features, how it works, meals, testimonials, pricing
+3. **Fills form** → Enters name, email, dietary preferences, referral source
+4. **Submits** → Data sent to Formspree (external service)
+5. **Confirmation** → Redirected to `thanks.html` with "Arigato!" message
 
-[Create simple form for users to sign up]
+### AI Meal Plan Generation (In Development)
+1. Backend receives user diet preferences from MongoDB
+2. Constructs OpenAI prompt: *"Create a 7-day [diet] meal plan for a BlossomFoods subscriber using Japanese-Indian fusion recipes"*
+3. OpenAI generates personalized plan
+4. Plan stored in database and returned to frontend
+5. User can approve/modify meals and set delivery schedule
 
-Healthy, tasty and hassle-free meals are waiting for you. Start eating well today. You can cancel or pause anytime. And the first meal is on us!
+---
 
-### We have 2 pricing plans
+## 🌐 Live Demo
 
-Prices include all applicable taxes. Users can cancel at any time.
+**Landing Page:** [https://rahul-rathva.github.io/BlossomFoods/](https://rahul-rathva.github.io/BlossomFoods/)
 
-Starter: $399 per month
+Try signing up for a free trial — the confirmation email will be sent to your inbox!
 
-- 1 meal per day
-- Order times are between 11am and 9pm
-- Delivery is free
+---
 
-Complete: $649 per month
+## 🎨 Design Highlights
 
-- 2 meal2 per day
-- Order 24/7
-- Delivery is free
-- Get access to latest recipes
+- **Brand Colors:**
+  - Sakura Pink: `#e8a1a6`
+  - Saffron Orange: `#ff9933`
+  - Zen Brown: `#5d4037`
+  - Cream Background: `#fdf2e9`
 
-### Photo gallery
+- **Animations:**
+  - Falling sakura petals (3-5 second cycles)
+  - Meal card 3D tilt on hover
+  - Gallery zoom effects
+  - Section reveal animations on scroll (in CSS, not yet JS-triggered)
 
-[Use the 12 photos we provided]
+- **Typography:**
+  - Rubik font (400, 500, 600, 700 weights)
+  - 10px base font size for flexible scaling
 
-### Customer testimonials
+---
 
-[Photos of customers included]
+## 📦 Dependencies
 
-Inexpensive, healthy and great-tasting meals, without even having to order manually! It feels truly magical. (Dave Bryson)
-The AI algorithm is crazy good, it chooses the right meals for me every time. It's amazing not to worry about food anymore! (Ben Hadley)
-Omnifood is a life saver! I just started a company, so there's no time for cooking. I couldn't live without my daily meals now! (Steve Miller)
-<<<<<<< HEAD
-I got Omnifood for the whole family, and it frees up so much time! Plus, everything is organic and vegan and without plastic. (Hannah Smith)
-=======
-I got SakuraFood for the whole family, and it frees up so much time! Plus, everything is organic and vegan and without plastic. (Hannah Smith)
->>>>>>> 8031487f55f8f799df7d9fdbc05afe2982ff2819
+**Frontend:**
+- Ionicons 5.4.0 (icon library)
+- Google Fonts (Rubik)
 
-### Section with logos of featured publications [see images]
+**Backend:**
+```json
+{
+  "express": "^5.2.1",
+  "mongoose": "^9.1.5",
+  "openai": "^6.16.0",
+  "cors": "^2.8.6",
+  "dotenv": "^17.2.3"
+}
+```
 
-### Contact information
+---
 
-Address: 623 Harrison St., 2nd Floor, San Francisco, CA 94107
-Phone: 415-201-6370
-<<<<<<< HEAD
-Email: hello@omnifood.com
-=======
-Email: hello@SakuraFood.com
->>>>>>> 8031487f55f8f799df7d9fdbc05afe2982ff2819
+## 📝 Next Steps to Full Launch
 
-Social profiles: instagram, facebook, twitter [links to them not available yet]
+| Priority | Task | Status |
+|----------|------|--------|
+| P0 | Deploy backend to production | ⏳ Pending |
+| P0 | Connect form to `/generate-plan` endpoint | ⏳ Pending |
+| P0 | Set up MongoDB Atlas cluster | ⏳ Pending |
+| P1 | Add user authentication (login/signup) | ⏳ Pending |
+| P1 | Implement meal plan approval workflow | ⏳ Pending |
+| P2 | Add payment processing (Stripe) | ⏳ Pending |
+| P2 | Delivery schedule management UI | ⏳ Pending |
 
-### Additional links [links not available yet]
+---
 
-Create account
-Sign in
-iOS app
-Android app
+## 🤝 Contributing
 
-<<<<<<< HEAD
-About Omnifood
-=======
-About SakuraFood
->>>>>>> 8031487f55f8f799df7d9fdbc05afe2982ff2819
-For Business
-Cooking partners
-Careers
+This is a personal portfolio project. Fork and customize as needed!
 
-Recipe directory
-Help center
-Privacy & terms
+---
 
-######
+## 📄 License
 
-## Sections
+ISC License — See package.json for details
 
-- Logo + Navigation
-- Hero
-- Featured in
-- How it works
-- Meals (and list of diets)
-- Testimonials + gallery
-- Pricing + features
-- CTA
-- Footer
+---
+
+## 👤 Author
+
+**Rahul Rathva**
+- GitHub: [@Rahul-rathva](https://github.com/Rahul-rathva)
+- Portfolio: [BlossomFoods Live](https://rahul-rathva.github.io/BlossomFoods/)
+
+---
+
+## 📞 Contact
+
+**Address:** Hyatt Place, 2nd Floor, New Delhi, India  
+**Phone:** +91 9265-219-230  
+**Email:** hello@blossomfoods.com
+
+---
+
+## 🌟 Acknowledgments
+
+- Landing page design inspired by modern SaaS practices
+- Japanese-Indian fusion concept celebrates culinary bridge between two cultures
+- Sakura theme represents beauty, wellness, and seasonal mindfulness
